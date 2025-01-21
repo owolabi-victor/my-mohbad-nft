@@ -1,66 +1,70 @@
-## Foundry
+# Tribute to Mohbad NFT Project
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project is a heartfelt tribute to the late Mohbad, a beloved icon of Afrobeats. Using blockchain technology and IPFS, we have created an NFT that immortalizes his legacy, allowing fans to hold a digital piece of his memory.
 
-Foundry consists of:
+## Project Overview
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+This project involves the creation and deployment of a smart contract for an NFT that:
+- Features an image of Mohbad uploaded to IPFS.
+- Includes metadata describing the NFT and its purpose.
+- Is deployed on the Ethereum blockchain (testnet or mainnet).
 
-## Documentation
+## Technology Stack
 
-https://book.getfoundry.sh/
+- **Solidity**: For writing the smart contract.
+- **Foundry**: For testing and deploying the smart contract.
+- **IPFS/Pinata**: For storing the image and metadata.
+- **VS Code**: For development and editing.
 
-## Usage
+## Steps to Create the NFT
 
-### Build
+1. **Upload the Image to IPFS**:
+   - The image of Mohbad was uploaded to IPFS via Pinata.
+   - The CID for the image is `bafkreienvsw7lyvumsu5uk6i3ucj5jpjsvwnvhb3ntv5a2bzntguq7i64a`.
 
-```shell
-$ forge build
-```
+2. **Create Metadata JSON**:
+   - A metadata JSON file was created to describe the NFT:
+     ```json
+     {
+         "name": "Tribute to Mohbad",
+         "description": "A tribute NFT for the late Mohbad, an icon of Afrobeats.",
+         "image": "ipfs://bafkreienvsw7lyvumsu5uk6i3ucj5jpjsvwnvhb3ntv5a2bzntguq7i64a"
+     }
+     ```
+   - This file was uploaded to IPFS, and the CID for the metadata file is used in the smart contract.
 
-### Test
+3. **Deploy the Smart Contract**:
+   - The smart contract includes the IPFS URI for the metadata file.
+   - The contract was deployed to a blockchain network using Foundry.
 
-```shell
-$ forge test
-```
+## How to Use
 
-### Format
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/owolabi-victor/smart-contract-lottery.git
+   ```
 
-```shell
-$ forge fmt
-```
+2. Install dependencies:
+   ```bash
+   forge install
+   ```
 
-### Gas Snapshots
+3. Deploy the smart contract:
+   ```bash
+   make deploy ARGS="--network <network-name>"
+   ```
 
-```shell
-$ forge snapshot
-```
+4. Verify the token URI:
+   - Call the `tokenURI` function on the deployed contract to get the metadata URI.
+   - Open the URI in an IPFS gateway to view the metadata.
 
-### Anvil
+## Tribute to Mohbad
 
-```shell
-$ anvil
-```
+This project is dedicated to Mohbad (Ilerioluwa Oladimeji Aloba), whose music and influence touched millions. Through this NFT, we honor his contributions to Afrobeats and ensure that his legacy lives on in the digital world.
 
-### Deploy
+May his soul rest in peace.
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+## License
 
-### Cast
+This project is open-source and available under the MIT License.
 
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
